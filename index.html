@@ -1,138 +1,1148 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="مطعم قصر العدوي للمشويات - منيو المشويات والوجبات والعروض والطواجن والصواني">
+
+  <meta name="description"
+    content="مطعم قصر العدوي للمشويات - منيو المشويات والوجبات والطواجن والصواني والشوربة والإضافات">
+
   <title>قصر العدوي للمشويات | المنيو</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- ==================== الخلفية ==================== -->
+
   <div class="smoke smoke-a"></div>
   <div class="smoke smoke-b"></div>
 
+
+  <!-- ==================== NAVBAR ==================== -->
+
   <header class="navbar">
+
     <a class="brand" href="#home">
       <img src="assets/logo.png" alt="شعار قصر العدوي للمشويات">
-      <span>قصر العدوي <b>للمشويات</b></span>
+
+      <span>
+        قصر العدوي
+        <b>للمشويات</b>
+      </span>
     </a>
 
+
     <nav class="nav-links">
+
       <a href="#home">الرئيسية</a>
+
       <a href="#menu">المنيو</a>
+
       <a href="#about">عن المطعم</a>
+
       <a href="#contact">تواصل معنا</a>
+
     </nav>
 
+
     <button class="cart-btn" id="openCart">
-      🛒 <span>السلة</span>
+
+      🛒
+
+      <span>السلة</span>
+
       <strong id="cartCount">0</strong>
+
     </button>
+
   </header>
 
+
+
   <main>
+
+
+    <!-- ==================== HERO ==================== -->
+
     <section class="hero" id="home">
+
       <div class="hero-content">
-        <div class="eyebrow">🔥 طعم الفحم الأصيل</div>
-        <h1>قصر العدوي<br><span>للمشويات</span></h1>
-        <p>مشويات، وجبات، عروض، طواجن وصواني — كل اللي بتحبه في مكان واحد.</p>
+
+        <div class="eyebrow">
+          🔥 طعم الفحم الأصيل
+        </div>
+
+
+        <h1>
+          قصر العدوي
+          <br>
+          <span>للمشويات</span>
+        </h1>
+
+
+        <p>
+          مشويات، وجبات، طواجن، صواني، شوربة وإضافات
+          — كل اللي بتحبه في مكان واحد.
+        </p>
+
+
         <div class="hero-actions">
-          <a href="#menu" class="btn primary">شوف المنيو</a>
-          <button class="btn ghost" id="heroCart">🛒 ابدأ طلبك</button>
+
+          <a href="#menu" class="btn primary">
+            شوف المنيو
+          </a>
+
+          <button class="btn ghost" id="heroCart">
+            🛒 ابدأ طلبك
+          </button>
+
         </div>
+
+
         <div class="hero-points">
+
           <span>🥩 مشويات طازة</span>
+
           <span>🔥 على الفحم</span>
+
           <span>❤️ طعم العدوي</span>
+
         </div>
+
       </div>
+
+
       <div class="hero-logo-wrap">
+
         <div class="glow"></div>
-        <img src="assets/logo.png" alt="قصر العدوي" class="hero-logo">
+
+        <img
+          src="assets/logo.png"
+          alt="قصر العدوي"
+          class="hero-logo">
+
       </div>
+
     </section>
+
+
+
+    <!-- ==================== MENU ==================== -->
 
     <section class="menu-section" id="menu">
+
+
       <div class="section-heading">
+
         <div>
-          <span class="mini-title">اختار اللي نفسك فيه</span>
-          <h2>منيو <span>العدوي</span></h2>
+
+          <span class="mini-title">
+            اختار اللي نفسك فيه
+          </span>
+
+          <h2>
+            منيو
+            <span>العدوي</span>
+          </h2>
+
         </div>
+
+
         <div class="search-wrap">
+
           <span>⌕</span>
-          <input id="search" type="search" placeholder="ابحث عن وجبة أو صنف...">
+
+          <input
+            id="search"
+            type="search"
+            placeholder="ابحث عن وجبة أو صنف...">
+
         </div>
+
       </div>
+
+
+
+      <!-- ==================== FILTERS ==================== -->
 
       <div class="filters" id="filters">
-        <button class="filter active" data-cat="الكل">الكل</button>
-        <button class="filter" data-cat="مشويات">🥩 مشويات</button>
-        <button class="filter" data-cat="وجبات">🍗 وجبات</button>
-        <button class="filter" data-cat="عروض">🔥 عروض</button>
-        <button class="filter" data-cat="طواجن">🍲 طواجن</button>
-        <button class="filter" data-cat="صواني">🍽️ صواني</button>
+
+        <button
+          class="filter active"
+          data-cat="الكل">
+          الكل
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="مشويات">
+          🥩 مشويات
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="وجبات">
+          🍗 وجبات
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="عروض">
+          🔥 عروض
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="طواجن">
+          🍲 طواجن
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="صواني">
+          🍽️ صواني
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="شوربة">
+          🥣 شوربة
+        </button>
+
+
+        <button
+          class="filter"
+          data-cat="إضافات">
+          ➕ إضافات
+        </button>
+
       </div>
 
-      <div class="menu-grid" id="menuGrid"></div>
-      <div class="empty" id="empty">مفيش صنف مطابق للبحث 😔</div>
+
+
+      <!-- ==================== MENU GRID ==================== -->
+
+      <div
+        class="menu-grid"
+        id="menuGrid">
+      </div>
+
+
+      <div
+        class="empty"
+        id="empty">
+        مفيش صنف مطابق للبحث 😔
+      </div>
+
     </section>
+
+
+
+    <!-- ==================== ABOUT ==================== -->
 
     <section class="about" id="about">
+
       <div class="about-card">
-        <div class="about-icon">🔥</div>
-        <div>
-          <span class="mini-title">حكاية الطعم</span>
-          <h2>العدوي... لما المشويات تبقى <span>حكاية</span></h2>
-          <p>بنقدم لك اختيارات متنوعة من المشويات والوجبات والعروض والطواجن والصواني، بتصميم طلب سهل وسريع.</p>
+
+        <div class="about-icon">
+          🔥
         </div>
+
+
+        <div>
+
+          <span class="mini-title">
+            حكاية الطعم
+          </span>
+
+
+          <h2>
+            العدوي...
+            لما المشويات تبقى
+            <span>حكاية</span>
+          </h2>
+
+
+          <p>
+            بنقدم لك اختيارات متنوعة من المشويات
+            والوجبات والعروض والطواجن والصواني
+            والشوربة والإضافات، بطعم أصيل وجودة مميزة.
+          </p>
+
+        </div>
+
       </div>
+
     </section>
+
+
+
+    <!-- ==================== CONTACT ==================== -->
 
     <section class="contact" id="contact">
+
       <div>
-        <span class="mini-title">جاهز للطلب؟</span>
-        <h2>خلي وجبتك الجاية من <span>العدوي</span> 🔥</h2>
-        <p>رقم الطلب والواتساب  = 01200085525<code></code> </p>
+
+        <span class="mini-title">
+          جاهز للطلب؟
+        </span>
+
+
+        <h2>
+          خلي وجبتك الجاية من
+          <span>العدوي</span>
+          🔥
+        </h2>
+
+
+        <p>
+          رقم الطلب والواتساب:
+          <strong>01200085525</strong>
+        </p>
+
       </div>
-      <button class="btn primary" id="contactOrder">افتح السلة</button>
+
+
+      <button
+        class="btn primary"
+        id="contactOrder">
+        افتح السلة
+      </button>
+
     </section>
+
   </main>
 
+
+
+  <!-- ==================== FOOTER ==================== -->
+
   <footer>
+
     <div class="footer-brand">
-      <img src="assets/logo.png" alt="">
-      <div><strong>قصر العدوي للمشويات</strong><small>طعم أصيل... على الفحم 🔥</small></div>
+
+      <img
+        src="assets/logo.png"
+        alt="قصر العدوي للمشويات">
+
+
+      <div>
+
+        <strong>
+          قصر العدوي للمشويات
+        </strong>
+
+        <small>
+          طعم أصيل... على الفحم 🔥
+        </small>
+
+      </div>
+
     </div>
-    <span>© 2026 قصر العدوي — جميع الحقوق محفوظة</span>
+
+
+    <span>
+      © 2026 قصر العدوي — جميع الحقوق محفوظة
+    </span>
+
   </footer>
 
-  <div class="cart-overlay" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
+
+
+  <!-- ==================== CART ==================== -->
+
+  <div
+    class="cart-overlay"
+    id="overlay">
+  </div>
+
+
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer">
+
+
     <div class="cart-head">
+
       <div>
-        <span class="mini-title">طلبك</span>
-        <h2>🛒 سلة العدوي</h2>
+
+        <span class="mini-title">
+          طلبك
+        </span>
+
+
+        <h2>
+          🛒 سلة العدوي
+        </h2>
+
       </div>
-      <button class="close" id="closeCart">×</button>
+
+
+      <button
+        class="close"
+        id="closeCart">
+        ×
+      </button>
+
     </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-empty" id="cartEmpty">السلة فاضية.<br>اختار وجبتك وابدأ الطلب 🔥</div>
+
+
+
+    <div
+      class="cart-items"
+      id="cartItems">
+    </div>
+
+
+    <div
+      class="cart-empty"
+      id="cartEmpty">
+
+      السلة فاضية.
+      <br>
+      اختار وجبتك وابدأ الطلب 🔥
+
+    </div>
+
+
+
     <div class="cart-foot">
-      <div class="total-row"><span>الإجمالي</span><strong id="total">0 جنيه</strong></div>
-      <button class="checkout" id="checkout">📱 إرسال الطلب على واتساب</button>
-      <button class="clear" id="clearCart">مسح السلة</button>
+
+
+      <div class="total-row">
+
+        <span>
+          الإجمالي
+        </span>
+
+
+        <strong id="total">
+          0 جنيه
+        </strong>
+
+      </div>
+
+
+      <button
+        class="checkout"
+        id="checkout">
+        📱 إرسال الطلب على واتساب
+      </button>
+
+
+      <button
+        class="clear"
+        id="clearCart">
+        مسح السلة
+      </button>
+
     </div>
+
   </aside>
 
-  <button class="floating-cart" id="floatingCart">🛒 <span id="floatingCount">0</span></button>
-  <div class="toast" id="toast"></div>
+
+
+  <!-- ==================== FLOATING CART ==================== -->
+
+  <button
+    class="floating-cart"
+    id="floatingCart">
+
+    🛒
+
+    <span id="floatingCount">
+      0
+    </span>
+
+  </button>
+
+
+  <div
+    class="toast"
+    id="toast">
+  </div>
+
+
+
+  <!-- ========================================================= -->
+  <!-- ======================== MENU DATA ====================== -->
+  <!-- ========================================================= -->
+
 
   <script>
-    const MENU = [{"id": "g1", "cat": "مشويات", "name": "كيلو كفتة", "price": 640, "img": "assets/p1-1.jpg", "desc": "كفتة مشوية على الفحم"}, {"id": "g2", "cat": "مشويات", "name": "كيلو لحمة", "price": 700, "img": "assets/p1-2.jpg", "desc": "لحمة مشوية بطعم العدوي"}, {"id": "g3", "cat": "مشويات", "name": "كيلو طرب", "price": 700, "img": "assets/p1-3.jpg", "desc": "طرب مشوي على الفحم"}, {"id": "g4", "cat": "مشويات", "name": "كيلو كباب", "price": 700, "img": "assets/p1-4.jpg", "desc": "كباب طازج ومشوي"}, {"id": "g5", "cat": "مشويات", "name": "كيلو مشكل", "price": 700, "img": "assets/p1-5.jpg", "desc": "تشكيلة مشويات مشكلة"}, {"id": "g6", "cat": "مشويات", "name": "كيلو مخ", "price": 640, "img": "assets/p1-6.jpg", "desc": "مخ متبل بطريقة العدوي"}, {"id": "g7", "cat": "مشويات", "name": "كيلو كبدة", "price": 640, "img": "assets/p1-7.jpg", "desc": "كبدة مشوية بطعم مميز"}, {"id": "g8", "cat": "مشويات", "name": "كيلو ريش ضاني", "price": 900, "img": "assets/p1-8.jpg", "desc": "ريش ضاني مشوية"}, {"id": "g9", "cat": "مشويات", "name": "كيلو نيفة ضاني", "price": 740, "img": "assets/p1-9.jpg", "desc": "نيفة ضاني مشوية"}, {"id": "g10", "cat": "مشويات", "name": "كيلو ممبار", "price": 400, "img": "assets/p1-10.jpg", "desc": "ممبار على طريقة العدوي"}, {"id": "m1", "cat": "وجبات", "name": "وجبة ربع فرخة ورك + رز", "price": 90, "img": "assets/p2-1.jpg", "desc": "ربع فرخة ورك مع الأرز"}, {"id": "m2", "cat": "وجبات", "name": "وجبة ربع فرخة صدر + رز", "price": 100, "img": "assets/p2-2.jpg", "desc": "ربع فرخة صدر مع الأرز"}, {"id": "m3", "cat": "وجبات", "name": "وجبة ميكس جريل", "price": 200, "img": "assets/p2-3.jpg", "desc": "تشكيلة جريل متنوعة"}, {"id": "m4", "cat": "وجبات", "name": "فردة حمام", "price": 170, "img": "assets/p2-4.jpg", "desc": "حمام محشي ومقدم ساخن"}, {"id": "m5", "cat": "وجبات", "name": "وجبة داود باشا", "price": 150, "img": "assets/p2-5.jpg", "desc": "داود باشا بطعم البيت"}, {"id": "m6", "cat": "وجبات", "name": "ورقة لحمة", "price": 200, "img": "assets/p2-6.jpg", "desc": "ورقة لحمة غنية بالنكهة"}, {"id": "m7", "cat": "وجبات", "name": "موزة ضاني", "price": 400, "img": "assets/p2-7.jpg", "desc": "موزة ضاني طرية"}, {"id": "m8", "cat": "وجبات", "name": "وجبة ملوخية بالفراخ", "price": 200, "img": "assets/p2-8.jpg", "desc": "ملوخية وفراخ مع الأرز"}, {"id": "m9", "cat": "وجبات", "name": "وجبة مشكل مشاوي", "price": 250, "img": "assets/p2-9.jpg", "desc": "لحمة + كفتة + كباب + ريشة ضاني + طرب"}, {"id": "o1", "cat": "عروض", "name": "وجبة مشكل ميكس", "price": 120, "img": "assets/offers-header.jpg", "desc": "شيش + كباب + كفتة + أرز"}, {"id": "o2", "cat": "عروض", "name": "وجبة مشكل مقلي", "price": 100, "img": "assets/offers-header.jpg", "desc": "كبدة + مخ + كلاوي"}, {"id": "o3", "cat": "عروض", "name": "وجبة فاجرا العدوي", "price": 180, "img": "assets/offers-header.jpg", "desc": "طبق عدوي مميز"}, {"id": "o4", "cat": "عروض", "name": "وجبة قصيرة", "price": 70, "img": "assets/offers-header.jpg", "desc": "2 كفتة + أرز"}, {"id": "o5", "cat": "عروض", "name": "وجبة قصيرة", "price": 70, "img": "assets/offers-header.jpg", "desc": "مكرونة اسكندراني + شورية + حواوشي"}, {"id": "o6", "cat": "عروض", "name": "وجبة المزنججي ورك", "price": 130, "img": "assets/offers-header.jpg", "desc": "ربع فرخة ورك + قطعة جلاش + سبع كفتة + أرز + سلطة + طحينة + عيش"}, {"id": "o7", "cat": "عروض", "name": "وجبة المزنججي صدر", "price": 140, "img": "assets/offers-header.jpg", "desc": "ربع فرخة صدر + قطعة جلاش + سبع كفتة + أرز + سلطة + طحينة + عيش"}, {"id": "o8", "cat": "عروض", "name": "وجبة الطيبين", "price": 90, "img": "assets/offers-header.jpg", "desc": "شيش فراخ شيش + قطعة جلاش + سبع كفتة + أرز + سلطة + طحينة + عيش"}, {"id": "o9", "cat": "عروض", "name": "عرض زمان", "price": 165, "img": "assets/offers-header.jpg", "desc": "وجبة فراخ بالرز + كفتة + واحد كبدة + 1 حواوشي"}, {"id": "o10", "cat": "عروض", "name": "وجبة ميكس جريل", "price": 200, "img": "assets/offers-header.jpg", "desc": "لحمة + كفتة + كباب + 2 سيخ فراخ شيش + أرز"}, {"id": "o11", "cat": "عروض", "name": "شواية العدوي", "price": 300, "img": "assets/offers-header.jpg", "desc": "ثمن لحمة + ثمن كفتة + سيخ فراخ شيش + 1 طرب + 2 أرز شورية"}, {"id": "f1", "cat": "طواجن", "name": "طاجن كوارع", "price": 150, "img": "assets/p4-1.jpg", "desc": "طاجن كوارع ساخن"}, {"id": "f2", "cat": "طواجن", "name": "طاجن مكرونة بشاميل", "price": 50, "img": "assets/p4-2.jpg", "desc": "مكرونة بشاميل"}, {"id": "f3", "cat": "طواجن", "name": "طاجن بطاطس باللحمة", "price": 150, "img": "assets/p4-3.jpg", "desc": "بطاطس باللحمة في الفرن"}, {"id": "f4", "cat": "طواجن", "name": "طاجن بامية باللحمة", "price": 150, "img": "assets/p4-4.jpg", "desc": "بامية باللحمة"}, {"id": "f5", "cat": "طواجن", "name": "طاجن عكاوي", "price": 160, "img": "assets/p4-5.jpg", "desc": "عكاوي طرية"}, {"id": "f6", "cat": "طواجن", "name": "طاجن مكرونة اسكندراني", "price": 40, "img": "assets/p4-6.jpg", "desc": "مكرونة اسكندراني"}, {"id": "f7", "cat": "طواجن", "name": "طاجن لحمة بالبصل", "price": 200, "img": "assets/p4-7.jpg", "desc": "لحمة بالبصل"}, {"id": "f8", "cat": "طواجن", "name": "مكرونة نجرسكو", "price": 90, "img": "assets/p4-8.jpg", "desc": "مكرونة نجرسكو"}, {"id": "s1", "cat": "صواني", "name": "صينية 3 أفراد", "price": 600, "img": "assets/p5-1.jpg", "desc": "نصف فرخة شيش + نص كيلو مشكل"}, {"id": "s2", "cat": "صواني", "name": "صينية 5 أفراد", "price": 850, "img": "assets/p5-2.jpg", "desc": "3/4 كيلو مشكل + فرخة شيش"}, {"id": "s3", "cat": "صواني", "name": "صينية 7 أفراد", "price": 1100, "img": "assets/p5-3.jpg", "desc": "1 كيلو مشكل + فرخة ونص شيش"}, {"id": "s4", "cat": "صواني", "name": "صينية النووي", "price": 1100, "img": "assets/p5-4.jpg", "desc": "ربع ممبار + ربع كفتة + ربع كباب + ربع لحمة + نص فرخة شيش + 3 قطع جلاش + صينية أرز"}, {"id": "s5", "cat": "صواني", "name": "صينية العدوي", "price": 900, "img": "assets/p5-5.jpg", "desc": "2 فردة حمام + نص كفتة + نص فرخة عادية + 2 قطعة جلاش"}, {"id": "s6", "cat": "صواني", "name": "صينية اللمة", "price": 1000, "img": "assets/p5-6.jpg", "desc": "3 فردة حمام + ربع كفتة + ربع نيفا + ربع ممبار + بطاطس"}, {"id": "s7", "cat": "صواني", "name": "صينية التجديد", "price": 500, "img": "assets/p5-7.jpg", "desc": "ربع كفتة + ربع كبدة + ثمن كباب + ثمن لحمة + 2 قطعة جلاش + رز + سلطة + طحينة + عيش"}];
+
+    const MENU = [
+
+
+      /* =====================================================
+         المشويات
+      ===================================================== */
+
+      {
+        id: "g1",
+        cat: "مشويات",
+        name: "كيلو كفتة",
+        price: 640,
+        img: "assets/p1-1.jpg",
+        desc: "كفتة مشوية على الفحم"
+      },
+
+
+      {
+        id: "g2",
+        cat: "مشويات",
+        name: "كيلو لحمة",
+        price: 700,
+        img: "assets/p1-2.jpg",
+        desc: "لحمة مشوية"
+      },
+
+
+      {
+        id: "g3",
+        cat: "مشويات",
+        name: "كيلو طرب",
+        price: 700,
+        img: "assets/p1-3.jpg",
+        desc: "طرب مشوي على الفحم"
+      },
+
+
+      {
+        id: "g4",
+        cat: "مشويات",
+        name: "كيلو كباب",
+        price: 700,
+        img: "assets/p1-4.jpg",
+        desc: "كباب مشوي"
+      },
+
+
+      {
+        id: "g5",
+        cat: "مشويات",
+        name: "كيلو مشكل",
+        price: 700,
+        img: "assets/p1-5.jpg",
+        desc: "تشكيلة مشويات مشكلة"
+      },
+
+
+      {
+        id: "g6",
+        cat: "مشويات",
+        name: "كيلو مخ",
+        price: 640,
+        img: "assets/p1-6.jpg",
+        desc: "مخ"
+      },
+
+
+      {
+        id: "g7",
+        cat: "مشويات",
+        name: "كيلو كبدة",
+        price: 640,
+        img: "assets/p1-7.jpg",
+        desc: "كبدة مشوية"
+      },
+
+
+      {
+        id: "g8",
+        cat: "مشويات",
+        name: "كيلو ريش ضاني",
+        price: 900,
+        img: "assets/p1-8.jpg",
+        desc: "ريش ضاني مشوية"
+      },
+
+
+      {
+        id: "g9",
+        cat: "مشويات",
+        name: "كيلو نيفة ضاني",
+        price: 740,
+        img: "assets/p1-9.jpg",
+        desc: "نيفة ضاني"
+      },
+
+
+      {
+        id: "g10",
+        cat: "مشويات",
+        name: "كيلو ممبار",
+        price: 400,
+        img: "assets/p1-10.jpg",
+        desc: "ممبار"
+      },
+
+
+
+      /* =====================================================
+         الوجبات
+      ===================================================== */
+
+      {
+        id: "m1",
+        cat: "وجبات",
+        name: "وجبة ربع فرخة ورك + رز",
+        price: 90,
+        img: "assets/p2-1.jpg",
+        desc: "ربع فرخة ورك + رز"
+      },
+
+
+      {
+        id: "m2",
+        cat: "وجبات",
+        name: "وجبة ربع فرخة صدر + رز",
+        price: 100,
+        img: "assets/p2-2.jpg",
+        desc: "ربع فرخة صدر + رز"
+      },
+
+
+      {
+        id: "m3",
+        cat: "وجبات",
+        name: "وجبة ميكس جريل",
+        price: 200,
+        img: "assets/p2-3.jpg",
+        desc: "ميكس جريل"
+      },
+
+
+      {
+        id: "m4",
+        cat: "وجبات",
+        name: "فردة حمام",
+        price: 170,
+        img: "assets/p2-4.jpg",
+        desc: "حمام"
+      },
+
+
+      {
+        id: "m5",
+        cat: "وجبات",
+        name: "وجبة داود باشا",
+        price: 150,
+        img: "assets/p2-5.jpg",
+        desc: "داود باشا"
+      },
+
+
+      {
+        id: "m6",
+        cat: "وجبات",
+        name: "ورقة لحمة",
+        price: 200,
+        img: "assets/p2-6.jpg",
+        desc: "ورقة لحمة"
+      },
+
+
+      {
+        id: "m7",
+        cat: "وجبات",
+        name: "موزة ضاني",
+        price: 400,
+        img: "assets/p2-7.jpg",
+        desc: "موزة ضاني"
+      },
+
+
+      {
+        id: "m8",
+        cat: "وجبات",
+        name: "وجبة ملوخية بالفراخ",
+        price: 200,
+        img: "assets/p2-8.jpg",
+        desc: "ملوخية بالفراخ"
+      },
+
+
+      {
+        id: "m9",
+        cat: "وجبات",
+        name: "وجبة مشكل مشاوي",
+        price: 250,
+        img: "assets/p2-9.jpg",
+        desc: "لحمة + كفتة + كباب + ريشة ضاني + طرب"
+      },
+
+
+
+      /* =====================================================
+         العروض
+      ===================================================== */
+
+      {
+        id: "o1",
+        cat: "عروض",
+        name: "وجبة الزلزال",
+        price: 100,
+        img: "assets/offers-header.jpg",
+        desc: "شيش طاووق + كفتة + ممبار + رز + عيش + سلطة + طحينة"
+      },
+
+
+      {
+        id: "o2",
+        cat: "عروض",
+        name: "وجبة مشكل ميكس",
+        price: 120,
+        img: "assets/offers-header.jpg",
+        desc: "شيش + كباب + كفتة + أرز"
+      },
+
+
+      {
+        id: "o3",
+        cat: "عروض",
+        name: "وجبة مشكل مقلي",
+        price: 100,
+        img: "assets/offers-header.jpg",
+        desc: "كبدة + مخ + كلاوي"
+      },
+
+
+      {
+        id: "o4",
+        cat: "عروض",
+        name: "وجبة فاجرا العدوي",
+        price: 180,
+        img: "assets/offers-header.jpg",
+        desc: "طبق عدوي مميز"
+      },
+
+
+      {
+        id: "o5",
+        cat: "عروض",
+        name: "وجبة قصيرة",
+        price: 70,
+        img: "assets/offers-header.jpg",
+        desc: "2 كفتة + أرز"
+      },
+
+
+      {
+        id: "o6",
+        cat: "عروض",
+        name: "وجبة المزنججي ورك",
+        price: 130,
+        img: "assets/offers-header.jpg",
+        desc: "ربع فرخة ورك + قطعة جلاش + صابع كفتة + أرز + سلطة + طحينة + عيش"
+      },
+
+
+      {
+        id: "o7",
+        cat: "عروض",
+        name: "وجبة المزنججي صدر",
+        price: 140,
+        img: "assets/offers-header.jpg",
+        desc: "ربع فرخة صدر + قطعة جلاش + صابع كفتة + أرز + سلطة + طحينة + عيش"
+      },
+
+
+      {
+        id: "o8",
+        cat: "عروض",
+        name: "وجبة الطيبين",
+        price: 90,
+        img: "assets/offers-header.jpg",
+        desc: "شيش فراخ + قطعة جلاش + صابع كفتة + أرز + سلطة + طحينة + عيش"
+      },
+
+
+      {
+        id: "o9",
+        cat: "عروض",
+        name: "عرض زمان",
+        price: 165,
+        img: "assets/offers-header.jpg",
+        desc: "فراخ بالرز + كفتة + كبدة + حواوشي"
+      },
+
+
+      {
+        id: "o10",
+        cat: "عروض",
+        name: "وجبة ميكس جريل",
+        price: 200,
+        img: "assets/offers-header.jpg",
+        desc: "لحمة + كفتة + كباب + 2 سيخ فراخ شيش + أرز"
+      },
+
+
+      {
+        id: "o11",
+        cat: "عروض",
+        name: "شواية العدوي",
+        price: 300,
+        img: "assets/offers-header.jpg",
+        desc: "ثمن لحمة + ثمن كفتة + سيخ فراخ شيش + 1 طرب + 2 أرز + شورية"
+      },
+
+
+
+      /* =====================================================
+         الطواجن
+      ===================================================== */
+
+      {
+        id: "f1",
+        cat: "طواجن",
+        name: "طاجن كوارع",
+        price: 180,
+        img: "assets/p4-1.jpg",
+        desc: "طاجن كوارع"
+      },
+
+
+      {
+        id: "f2",
+        cat: "طواجن",
+        name: "طاجن كوارع",
+        price: 150,
+        img: "assets/p4-1.jpg",
+        desc: "طاجن كوارع"
+      },
+
+
+      {
+        id: "f3",
+        cat: "طواجن",
+        name: "طاجن مكرونة بشاميل",
+        price: 50,
+        img: "assets/p4-2.jpg",
+        desc: "مكرونة بشاميل"
+      },
+
+
+      {
+        id: "f4",
+        cat: "طواجن",
+        name: "طاجن بطاطس باللحمة",
+        price: 150,
+        img: "assets/p4-3.jpg",
+        desc: "بطاطس باللحمة"
+      },
+
+
+      {
+        id: "f5",
+        cat: "طواجن",
+        name: "طاجن بامية باللحمة",
+        price: 150,
+        img: "assets/p4-4.jpg",
+        desc: "بامية باللحمة"
+      },
+
+
+      {
+        id: "f6",
+        cat: "طواجن",
+        name: "طاجن عكاوي",
+        price: 160,
+        img: "assets/p4-5.jpg",
+        desc: "عكاوي"
+      },
+
+
+      {
+        id: "f7",
+        cat: "طواجن",
+        name: "طاجن مكرونة اسكندراني",
+        price: 40,
+        img: "assets/p4-6.jpg",
+        desc: "مكرونة اسكندراني"
+      },
+
+
+      {
+        id: "f8",
+        cat: "طواجن",
+        name: "طاجن لحمة بالبصل",
+        price: 200,
+        img: "assets/p4-7.jpg",
+        desc: "لحمة بالبصل"
+      },
+
+
+      {
+        id: "f9",
+        cat: "طواجن",
+        name: "مكرونة نجرسكو",
+        price: 110,
+        img: "assets/p4-8.jpg",
+        desc: "مكرونة نجرسكو"
+      },
+
+
+      {
+        id: "f10",
+        cat: "طواجن",
+        name: "مكرونة نجرسكو",
+        price: 90,
+        img: "assets/p4-8.jpg",
+        desc: "مكرونة نجرسكو"
+      },
+
+
+
+      /* =====================================================
+         الصواني
+      ===================================================== */
+
+      {
+        id: "s1",
+        cat: "صواني",
+        name: "صينية 3 أفراد",
+        price: 600,
+        img: "assets/p5-1.jpg",
+        desc: "نص فرخة شيش + نص كيلو مشكل"
+      },
+
+
+      {
+        id: "s2",
+        cat: "صواني",
+        name: "صينية 5 أفراد",
+        price: 850,
+        img: "assets/p5-2.jpg",
+        desc: "3/4 كيلو مشكل + فرخة شيش"
+      },
+
+
+      {
+        id: "s3",
+        cat: "صواني",
+        name: "صينية 7 أفراد",
+        price: 1100,
+        img: "assets/p5-3.jpg",
+        desc: "1 كيلو مشكل + فرخة ونص شيش"
+      },
+
+
+      {
+        id: "s4",
+        cat: "صواني",
+        name: "صينية النووي",
+        price: 1100,
+        img: "assets/p5-4.jpg",
+        desc: "ربع ممبار + ربع كفتة + ربع كباب + ربع لحمة + نص فرخة شيش + 3 قطع جلاش + صينية أرز"
+      },
+
+
+      {
+        id: "s5",
+        cat: "صواني",
+        name: "صينية العدوي",
+        price: 900,
+        img: "assets/p5-5.jpg",
+        desc: "2 فردة حمام + نص كفتة + نص فرخة عادية + 2 قطعة جلاش"
+      },
+
+
+      {
+        id: "s6",
+        cat: "صواني",
+        name: "صينية اللمة",
+        price: 1000,
+        img: "assets/p5-6.jpg",
+        desc: "3 فردة حمام + ربع كفتة + ربع نيفة + ربع ممبار + بطاطس"
+      },
+
+
+      {
+        id: "s7",
+        cat: "صواني",
+        name: "صينية التجديد",
+        price: 500,
+        img: "assets/p5-7.jpg",
+        desc: "ربع كفتة + ربع كبدة + ثمن كباب + ثمن لحمة + 2 قطعة جلاش + رز + سلطة + طحينة + عيش"
+      },
+
+
+
+      /* =====================================================
+         الشوربة
+      ===================================================== */
+
+      {
+        id: "sh1",
+        cat: "شوربة",
+        name: "شوربة سادة",
+        price: 15,
+        img: "assets/soup.jpg",
+        desc: "شوربة سادة"
+      },
+
+
+      {
+        id: "sh2",
+        cat: "شوربة",
+        name: "شوربة لسان عصفور",
+        price: 20,
+        img: "assets/soup.jpg",
+        desc: "شوربة لسان عصفور"
+      },
+
+
+      {
+        id: "sh3",
+        cat: "شوربة",
+        name: "شوربة كوارع",
+        price: 40,
+        img: "assets/soup.jpg",
+        desc: "شوربة كوارع"
+      },
+
+
+      {
+        id: "sh4",
+        cat: "شوربة",
+        name: "شوربة عدس",
+        price: 30,
+        img: "assets/soup.jpg",
+        desc: "شوربة عدس"
+      },
+
+
+      {
+        id: "sh5",
+        cat: "شوربة",
+        name: "ملوخية",
+        price: 40,
+        img: "assets/soup.jpg",
+        desc: "ملوخية"
+      },
+
+
+
+      /* =====================================================
+         الإضافات
+      ===================================================== */
+
+      {
+        id: "a1",
+        cat: "إضافات",
+        name: "طبق أرز سادة",
+        price: 50,
+        img: "assets/additions.jpg",
+        desc: "أرز سادة"
+      },
+
+
+      {
+        id: "a2",
+        cat: "إضافات",
+        name: "طبق أرز بالخلطة",
+        price: 40,
+        img: "assets/additions.jpg",
+        desc: "أرز بالخلطة"
+      },
+
+
+      {
+        id: "a3",
+        cat: "إضافات",
+        name: "طبق أرز",
+        price: 30,
+        img: "assets/additions.jpg",
+        desc: "أرز"
+      },
+
+
+      {
+        id: "a4",
+        cat: "إضافات",
+        name: "علبة طحينة",
+        price: 20,
+        img: "assets/additions.jpg",
+        desc: "طحينة"
+      },
+
+
+      {
+        id: "a5",
+        cat: "إضافات",
+        name: "قطعة جلاش باللحمة",
+        price: 20,
+        img: "assets/additions.jpg",
+        desc: "جلاش باللحمة"
+      },
+
+
+      {
+        id: "a6",
+        cat: "إضافات",
+        name: "طبق مخلل",
+        price: 10,
+        img: "assets/additions.jpg",
+        desc: "مخلل"
+      },
+
+
+      {
+        id: "a7",
+        cat: "إضافات",
+        name: "بيبسي",
+        price: 25,
+        img: "assets/additions.jpg",
+        desc: "بيبسي"
+      },
+
+
+      {
+        id: "a8",
+        cat: "إضافات",
+        name: "مياه صغيرة",
+        price: 10,
+        img: "assets/additions.jpg",
+        desc: "مياه معدنية صغيرة"
+      },
+
+
+      {
+        id: "a9",
+        cat: "إضافات",
+        name: "مياه كبيرة",
+        price: 15,
+        img: "assets/additions.jpg",
+        desc: "مياه معدنية كبيرة"
+      }
+
+    ];
+
   </script>
+
+
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+
   <script src="script.js"></script>
+
 </body>
 </html>
