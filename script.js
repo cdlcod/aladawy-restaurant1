@@ -1,29 +1,48 @@
 
 let cart = JSON.parse(localStorage.getItem("aladawyCart") || "[]");
+
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
 const money = n => `${Number(n).toLocaleString("ar-EG")} جنيه`;
 
-function saveCart(){
+function saveCart() {
   localStorage.setItem("aladawyCart", JSON.stringify(cart));
 }
 
-function toast(message){
+function toast(message) {
   const el = $("#toast");
+
+  if (!el) return;
+
   el.textContent = message;
   el.classList.add("show");
+
   clearTimeout(window.toastTimer);
-  window.toastTimer = setTimeout(()=>el.classList.remove("show"),2200);
+
+  window.toastTimer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 2200);
 }
 
-function renderMenu(){
+// عرض أصناف المنيو
+function renderMenu() {
   const grid = $("#menuGrid");
-  const search = $("#search").value.trim().toLowerCase();
-  const active = document.querySelector(".filter.active")?.dataset.cat || "الكل";
+  const searchInput = $("#search");
+
+  if (!grid || !searchInput) return;
+
+  const search = searchInput.value.trim().toLowerCase();
+
+  const active =
+    document.querySelector(".filter.active")?.dataset.cat || "الكل";
+
   const list = MENU.filter(item => {
     const matchesCat = active === "الكل" || item.cat === active;
-    const text = `${item.name} ${item.desc} ${item.cat}`.toLowerCase();
+
+    const text =
+      `${item.name} ${item.desc || ""} ${item.cat}`.toLowerCase();
+
     return matchesCat && text.includes(search);
   });
 
@@ -33,147 +52,302 @@ function renderMenu(){
         <img src="${item.img}" alt="${item.name}" loading="lazy">
         <span class="badge">${item.cat}</span>
       </div>
+
       <div class="card-body">
         <h3>${item.name}</h3>
-        <p>${item.desc}</p>
+        <p>${item.desc || ""}</p>
+
         <div class="card-bottom">
-          <div class="price">${money(item.price)} <small>/ الوجبة</small></div>
-          <button class="add" onclick="addToCart('${item.id}')">+</button>
+          <div class="price">
+            ${money(item.price)} <small>/ الوجبة</small>
+          </div>
+
+          <button class="add" onclick="addToCart('${item.id}')">
+            +
+          </button>
         </div>
       </div>
     </article>
   `).join("");
 
-  $("#empty").style.display = list.length ? "none" : "block";
+  const empty = $("#empty");
+
+  if (empty) {
+    empty.style.display = list.length ? "none" : "block";
+  }
 }
 
-function addToCart(id){
-  const item = MENU.find(x => x.id === id);
-  if(!item) return;
-  const existing = cart.find(x => x.id === id);
-  if(existing) existing.qty++;
-  else cart.push({id:item.id, qty:1});
+// إضافة صنف للسلة
+function addToCart(id) {
+  const item = MENU.find(x => String(x.id) === String(id));
+
+  if (!item) {
+    toast("الصنف غير موجود");
+    return;
+  }
+
+  const existing = cart.find(x => String(x.id) === String(id));
+
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({
+      id: item.id,
+      qty: 1
+    });
+  }
+
   saveCart();
   renderCart();
   openCart();
+
   toast(`تمت إضافة ${item.name} 🔥`);
 }
 
-function changeQty(id, delta){
-  const row = cart.find(x => x.id === id);
-  if(!row) return;
+// زيادة أو تقليل الكمية
+function changeQty(id, delta) {
+  const row = cart.find(x => String(x.id) === String(id));
+
+  if (!row) return;
+
   row.qty += delta;
-  if(row.qty <= 0) cart = cart.filter(x => x.id !== id);
+
+  if (row.qty <= 0) {
+    cart = cart.filter(x => String(x.id) !== String(id));
+  }
+
   saveCart();
   renderCart();
 }
 
-function removeItem(id){
-  cart = cart.filter(x => x.id !== id);
+// حذف صنف
+function removeItem(id) {
+  cart = cart.filter(x => String(x.id) !== String(id));
+
   saveCart();
   renderCart();
+
+  toast("تم حذف الصنف");
 }
 
-function renderCart(){
+// عرض محتويات السلة
+function renderCart() {
   const box = $("#cartItems");
   const empty = $("#cartEmpty");
-  const count = cart.reduce((sum,x)=>sum+x.qty,0);
-  const total = cart.reduce((sum,x)=>{
-    const item = MENU.find(m=>m.id===x.id);
-    return sum + (item ? item.price*x.qty : 0);
-  },0);
 
-  $("#cartCount").textContent = count;
-  $("#floatingCount").textContent = count;
-  $("#total").textContent = money(total);
+  if (!box || !empty) return;
 
-  if(!cart.length){
+  // تجاهل أي صنف لم يعد موجودًا في المنيو
+  cart = cart.filter(row =>
+    MENU.some(item => String(item.id) === String(row.id))
+  );
+
+  const count = cart.reduce((sum, row) => sum + row.qty, 0);
+
+  const total = cart.reduce((sum, row) => {
+    const item = MENU.find(x => String(x.id) === String(row.id));
+
+    return sum + (item ? item.price * row.qty : 0);
+  }, 0);
+
+  if ($("#cartCount")) {
+    $("#cartCount").textContent = count;
+  }
+
+  if ($("#floatingCount")) {
+    $("#floatingCount").textContent = count;
+  }
+
+  if ($("#total")) {
+    $("#total").textContent = money(total);
+  }
+
+  if (!cart.length) {
     box.innerHTML = "";
     empty.style.display = "block";
+    saveCart();
     return;
   }
+
   empty.style.display = "none";
 
-  box.innerHTML = cart.map(row=>{
-    const item = MENU.find(m=>m.id===row.id);
+  box.innerHTML = cart.map(row => {
+    const item = MENU.find(x => String(x.id) === String(row.id));
+
+    if (!item) return "";
+
     return `
       <div class="cart-item">
         <div>
           <h4>${item.name}</h4>
           <small>${money(item.price)} × ${row.qty}</small>
         </div>
+
         <div>
           <div class="qty">
-            <button onclick="changeQty('${item.id}',1)">+</button>
+            <button onclick="changeQty('${item.id}', 1)">+</button>
+
             <b>${row.qty}</b>
-            <button onclick="changeQty('${item.id}',-1)">−</button>
+
+            <button onclick="changeQty('${item.id}', -1)">−</button>
           </div>
-          <button class="remove" onclick="removeItem('${item.id}')">حذف</button>
+
+          <button class="remove"
+            onclick="removeItem('${item.id}')">
+            حذف
+          </button>
         </div>
       </div>
     `;
   }).join("");
+
+  saveCart();
 }
 
-function openCart(){
-  $("#cartDrawer").classList.add("open");
-  $("#overlay").classList.add("show");
-}
-function closeCart(){
-  $("#cartDrawer").classList.remove("open");
-  $("#overlay").classList.remove("show");
+// فتح السلة
+function openCart() {
+  $("#cartDrawer")?.classList.add("open");
+  $("#overlay")?.classList.add("show");
 }
 
-function sendWhatsApp(){
-  if(!cart.length){
+// إغلاق السلة
+function closeCart() {
+  $("#cartDrawer")?.classList.remove("open");
+  $("#overlay")?.classList.remove("show");
+}
+
+// إرسال الطلب على واتساب
+function sendWhatsApp() {
+  if (!cart.length) {
     toast("السلة فاضية — اختار وجبة الأول 😄");
     return;
   }
 
-  // غيّر الرقم ده لرقم المطعم بصيغة دولية بدون +
-  const phone = "201200085525";
-  
+  // قراءة بيانات العميل
+  const name = $("#customerName")?.value.trim() || "";
+  const address = $("#customerAddress")?.value.trim() || "";
+  const customerPhone = $("#customerPhone")?.value.trim() || "";
+
+  // التأكد من إدخال البيانات
+  if (!name) {
+    toast("من فضلك اكتب اسم العميل");
+    $("#customerName")?.focus();
+    return;
+  }
+
+  if (!address) {
+    toast("من فضلك اكتب عنوان التوصيل");
+    $("#customerAddress")?.focus();
+    return;
+  }
+
+  if (!customerPhone) {
+    toast("من فضلك اكتب رقم موبايلك");
+    $("#customerPhone")?.focus();
+    return;
+  }
+
+  // التحقق من رقم الموبايل المصري
+  const normalizedPhone = customerPhone.replace(/[\s()-]/g, "");
+
+  if (!/^(\+?20|0)?1[0125]\d{8}$/.test(normalizedPhone)) {
+    toast("اكتب رقم موبايل مصري صحيح");
+    $("#customerPhone")?.focus();
+    return;
+  }
+
+  // رقم واتساب المطعم بصيغة دولية بدون علامة +
+  const restaurantPhone = "201200085525";
 
   let total = 0;
-  let msg = "🔥 *طلب جديد من قصر العدوي للمشويات*%0A%0A";
 
-  cart.forEach(row=>{
-    const item = MENU.find(m=>m.id===row.id);
-    const sub = item.price * row.qty;
-    total += sub;
-    msg += `🍽️ ${item.name}%0Aالكمية: ${row.qty}%0Aالسعر: ${sub} جنيه%0A%0A`;
+  // بيانات العميل في رسالة واتساب
+  let msg =
+    "🔥 طلب جديد من قصر العدوي للمشويات\n\n" +
+    "👤 اسم العميل: " + name + "\n" +
+    "📍 عنوان التوصيل: " + address + "\n" +
+    "📞 رقم موبايل العميل: " + customerPhone + "\n\n" +
+    "🍽️ تفاصيل الطلب:\n";
+
+  // تفاصيل الأصناف والكميات
+  cart.forEach(row => {
+    const item = MENU.find(x => String(x.id) === String(row.id));
+
+    if (!item) return;
+
+    const subtotal = item.price * row.qty;
+
+    total += subtotal;
+
+    msg +=
+      "\n🍴 " + item.name +
+      "\nالكمية: " + row.qty +
+      "\nالسعر: " + subtotal + " جنيه\n";
   });
 
-  msg += `💰 *الإجمالي: ${total} جنيه*`;
-  window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  msg +=
+    "\n💰 الإجمالي: " + total + " جنيه\n\n" +
+    "شكرًا لطلبك من قصر العدوي للمشويات ❤️";
+
+  const url =
+    "https://wa.me/" +
+    restaurantPhone +
+    "?text=" +
+    encodeURIComponent(msg);
+
+  // فتح واتساب برسالة الطلب
+  const whatsappWindow = window.open(url, "_blank");
+
+  if (!whatsappWindow) {
+    // بديل إذا منع المتصفح فتح نافذة جديدة
+    window.location.href = url;
+  }
 }
 
-$$(".filter").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    $$(".filter").forEach(x=>x.classList.remove("active"));
+// تشغيل فلاتر المنيو
+$$(".filter").forEach(btn => {
+  btn.addEventListener("click", () => {
+    $$(".filter").forEach(x => x.classList.remove("active"));
+
     btn.classList.add("active");
+
     renderMenu();
   });
 });
 
-$("#search").addEventListener("input", renderMenu);
-$("#openCart").addEventListener("click", openCart);
-$("#floatingCart").addEventListener("click", openCart);
-$("#heroCart").addEventListener("click", openCart);
-$("#contactOrder").addEventListener("click", openCart);
-$("#closeCart").addEventListener("click", closeCart);
-$("#overlay").addEventListener("click", closeCart);
-$("#checkout").addEventListener("click", sendWhatsApp);
-$("#clearCart").addEventListener("click", ()=>{
+// البحث
+$("#search")?.addEventListener("input", renderMenu);
+
+// أزرار فتح السلة
+$("#openCart")?.addEventListener("click", openCart);
+$("#floatingCart")?.addEventListener("click", openCart);
+$("#heroCart")?.addEventListener("click", openCart);
+$("#contactOrder")?.addEventListener("click", openCart);
+
+// أزرار إغلاق السلة
+$("#closeCart")?.addEventListener("click", closeCart);
+$("#overlay")?.addEventListener("click", closeCart);
+
+// إرسال الطلب
+$("#checkout")?.addEventListener("click", sendWhatsApp);
+
+// مسح السلة
+$("#clearCart")?.addEventListener("click", () => {
   cart = [];
+
   saveCart();
   renderCart();
+
   toast("اتمسحت السلة");
 });
 
-document.addEventListener("keydown", e=>{
-  if(e.key === "Escape") closeCart();
+// إغلاق السلة بزر Escape
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeCart();
+  }
 });
 
+// تشغيل الموقع
 renderMenu();
 renderCart();
